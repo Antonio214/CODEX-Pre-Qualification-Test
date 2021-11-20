@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import modules.CNPJValidator;
+
 public class TestCNPJValidator {
     String validCNPJ = "43517047000130";
     CNPJValidator validator = new CNPJValidator();
