@@ -5,6 +5,11 @@ import constants.Messages;
 public class CNPJValidator {
     public String check(String cnpjToValidate) {
         String[] cnpjChars = cnpjToValidate.split("");
+
+        if (cnpjChars.length != 14) {
+            return Messages.INVALID_AMOUNT_DIGIT;
+        }
+
         Integer[] cnpjDigits = convertStringToDigits(cnpjChars);
 
         if (validateDigit(cnpjDigits)) {
