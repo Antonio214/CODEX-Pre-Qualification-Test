@@ -1,7 +1,9 @@
 package modules;
 
+import constants.Messages;
+
 public class CNPJValidator {
     public String check(String cnpjToValidate) {
-        return "CNPJ informado é valido";
+        return Messages.VALIDCNPJ;
     }
 }

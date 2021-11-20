@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import constants.Messages;
 import modules.CNPJValidator;
 
 public class TestCNPJValidator {
@@ -10,7 +11,7 @@ public class TestCNPJValidator {
     @Test
     public void shouldInformValidNumberCNPJ() {
         System.out.println("This should inform that a number format CNPJ is valid!");
-        Assertions.assertEquals(validator.check(validCNPJ), "CNPJ informado é valido",
+        Assertions.assertEquals(validator.check(validCNPJ), Messages.VALIDCNPJ,
                 "App is not recognizing a valid CPNJ as valid");
     }
 }
