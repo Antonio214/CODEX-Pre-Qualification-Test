@@ -4,7 +4,8 @@ import constants.Messages;
 
 public class CNPJValidator {
     public String check(String cnpjToValidate) {
-        Integer[] cnpjDigits = convertStringToDigits(cnpjToValidate);
+        String[] cnpjChars = cnpjToValidate.split("");
+        Integer[] cnpjDigits = convertStringToDigits(cnpjChars);
 
         if (validateDigit(cnpjDigits)) {
             return Messages.VALID_CNPJ;
@@ -41,13 +42,11 @@ public class CNPJValidator {
     }
 
     // Transform cpnj from string into a array of integers
-    private Integer[] convertStringToDigits(String cnpjToConvert) {
+    private Integer[] convertStringToDigits(String[] cnpjCharsToConvert) {
         Integer[] digits = new Integer[14];
 
-        String[] cnpjChars = cnpjToConvert.split("");
-
-        for (int i = 0; i < cnpjChars.length; i++) {
-            digits[i] = Integer.parseInt(cnpjChars[i]);
+        for (int i = 0; i < cnpjCharsToConvert.length; i++) {
+            digits[i] = Integer.parseInt(cnpjCharsToConvert[i]);
         }
 
         return digits;
