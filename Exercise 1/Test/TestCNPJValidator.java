@@ -8,6 +8,7 @@ public class TestCNPJValidator {
     String[] validCNPJs = { "43517047000130", "82867857000178", "09918723000149", "32601289000190", "20499660000176" };
     String[] invalidCNPJs = { "11111111111111", "22222222222222", "33333333333333", "44444444444444",
             "55555555555555" };
+    String smallCNPJ = "1111";
     CNPJValidator validator = new CNPJValidator();
 
     @Test
@@ -28,5 +29,12 @@ public class TestCNPJValidator {
             Assertions.assertEquals(validator.check(invalidCNPJ), Messages.INVALID_DIGIT,
                     "App is not recognizing a CNPJ as invalid");
         }
+    }
+
+    @Test
+    public void shouldInformInvalidQuantityOfNumbers() {
+        System.out.println("This should inform that a CNPJ informed doesn't have 14 digits");
+        Assertions.assertEquals(validator.check(smallCNPJ), Messages.INVALID_AMOUNT_DIGIT,
+                "App is not recognizing the size of CNPJ");
     }
 }
