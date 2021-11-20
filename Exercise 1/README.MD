@@ -19,6 +19,12 @@ The binaries files are already compiled for you. So you just need to run the fol
 
 This will open the binaries folder and execute the app.
 
+As an extra you can run the tests in this project by running the following command:
+
+```bash
+    cd bin/ && java -jar ../lib/junit-platform-console-standalone-1.7.0-all.jar -cp "." --select-class TestCNPJValidator
+```
+
 ## About my solution
 
 This seems like a validation kind of problem. In these scenarios I like to use the Test Driven Design approach. For the following reasons:
@@ -53,4 +59,4 @@ So there will be an extra todo.md file in the project where you can find my mile
 
 ## Images and Videos
 
-TODO: add images and videos here
+**TODO: add images and videos here**
