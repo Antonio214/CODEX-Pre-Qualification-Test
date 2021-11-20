@@ -6,7 +6,7 @@ public class CNPJValidator {
     public String check(String cnpjToValidate) {
         String[] cnpjChars = cnpjToValidate.split("");
 
-        if (cnpjChars.length != 14) {
+        if (hasWrongAmountOfDigits(cnpjChars)) {
             return Messages.INVALID_AMOUNT_DIGIT;
         }
 
@@ -17,6 +17,11 @@ public class CNPJValidator {
         } else {
             return Messages.INVALID_DIGIT;
         }
+    }
+
+    // Return true if the candidate doesn't has 14 digits
+    private boolean hasWrongAmountOfDigits(String[] candidate) {
+        return candidate.length != 14;
     }
 
     // Uses Receitas Federal's logic to validate digits
