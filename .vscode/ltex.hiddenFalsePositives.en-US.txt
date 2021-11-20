@@ -1,0 +1,3 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QThis repository was created to display my exercises resolutions as proposed in the CODEX SummerIntership Pre qualification program.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QAlso, validate if it's a well-formed CNPJ, considering the \"check digits\", as defined by Receita Federal ()\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QAlso, validate if it's a well-formed CNPJ, considering the \"check digits\", as defined by Receita Federal in here\\E$"}
