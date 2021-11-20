@@ -12,14 +12,14 @@ public class TestCNPJValidator {
     @Test
     public void shouldInformValidNumberCNPJ() {
         System.out.println("This should inform that a number format CNPJ is valid!");
-        Assertions.assertEquals(validator.check(validCNPJ), Messages.VALIDCNPJ,
+        Assertions.assertEquals(validator.check(validCNPJ), Messages.VALID_CNPJ,
                 "App is not recognizing a valid CPNJ as valid");
     }
 
     @Test
     public void shouldInformNotValidNumberCNPJ() {
         System.out.println("This should inform that a number format CNPJ is not valid!");
-        Assertions.assertEquals(validator.check(invalidCNPJ), "CNPJ informado não é valido, erro no dígito verificador",
+        Assertions.assertEquals(validator.check(invalidCNPJ), Messages.INVALID_DIGIT,
                 "App is not recognizing a CNPJ as invalid");
     }
 }
