@@ -1,5 +1,5 @@
-import modules.CNPJModel;
 import modules.CNPJValidator;
+import useCases.CNPJModel;
 
 public class App {
     public static void main(String[] args) throws Exception {

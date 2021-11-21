@@ -2,7 +2,6 @@ package useCases;
 
 import constants.Messages;
 import interfaces.iValidationRule;
-import modules.CNPJModel;
 
 public class DigitValidation implements iValidationRule {
 

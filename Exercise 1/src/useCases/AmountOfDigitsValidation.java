@@ -2,7 +2,6 @@ package useCases;
 
 import constants.Messages;
 import interfaces.iValidationRule;
-import modules.CNPJModel;
 
 public class AmountOfDigitsValidation implements iValidationRule {
     final Integer CNPJ_AMOUNT_OF_DIGITS = 14;

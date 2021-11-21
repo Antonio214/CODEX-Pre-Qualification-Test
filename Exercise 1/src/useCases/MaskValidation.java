@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 import constants.Messages;
 import interfaces.iValidationRule;
-import modules.CNPJModel;
 
 public class MaskValidation implements iValidationRule {
 

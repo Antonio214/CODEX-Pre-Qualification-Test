@@ -2,8 +2,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import constants.Messages;
-import modules.CNPJModel;
 import modules.CNPJValidator;
+import useCases.CNPJModel;
 
 public class TestCNPJValidator {
     String[] validCNPJs = { "43517047000130", "82867857000178", "09918723000149", "32601289000190", "20499660000176" };
