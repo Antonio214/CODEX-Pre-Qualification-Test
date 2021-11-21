@@ -8,6 +8,11 @@
 
 ## Side notes
 
+- If two rectangles intersect that means an edge point of rectB is inside rectA or is equal to an edge point of rectA
+- Rect Notation -> (x1,y1;x2,y2)
+- Point notation -> x1,y1
+
 ## Future Ideas:
 
+- [] Validate User Imput
 - [] Maybe add some GUI to project
