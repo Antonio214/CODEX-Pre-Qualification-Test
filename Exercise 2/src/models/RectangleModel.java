@@ -44,6 +44,21 @@ public class RectangleModel {
                 return true;
             }
         }
+
+        if (isWithinX(candidate) && isWithinY(candidate)) {
+            return true;
+        }
+
         return false;
+    }
+
+    private boolean isWithinX(PointModel candidate) {
+        return (candidate.xPosition >= this.botLeftPoint.xPosition)
+                && (candidate.yPosition <= this.botRigthPoint.xPosition);
+    }
+
+    private boolean isWithinY(PointModel candidate) {
+        return (candidate.yPosition >= this.botLeftPoint.yPosition)
+                && (candidate.yPosition <= this.topLeftPoint.yPosition);
     }
 }
