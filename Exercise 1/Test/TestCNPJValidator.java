@@ -48,4 +48,5 @@ public class TestCNPJValidator {
         Assertions.assertEquals(validator.check(invalidMaskCNPJ), Messages.INVALID_MASK,
                 "App is not recognizing an invalid Mask");
     }
+
 }

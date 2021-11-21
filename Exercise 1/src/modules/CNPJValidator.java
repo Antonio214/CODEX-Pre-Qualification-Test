@@ -1,11 +1,17 @@
 package modules;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import constants.Messages;
 
 public class CNPJValidator {
     public String check(String cnpjToValidate) {
-        String[] cnpjChars = cnpjToValidate.split("");
+        if (maskIsInvalid(cnpjToValidate)) {
+            return Messages.INVALID_MASK;
+        }
 
+        String[] cnpjChars = cnpjToValidate.split("");
         if (hasWrongAmountOfDigits(cnpjChars)) {
             return Messages.INVALID_AMOUNT_DIGIT;
         }
@@ -16,6 +22,20 @@ public class CNPJValidator {
             return Messages.VALID_CNPJ;
         } else {
             return Messages.INVALID_DIGIT;
+        }
+    }
+
+    // return true if doesn't match pattern XX.XXX.XXX/YYYY-ZZ
+    private boolean maskIsInvalid(String maskToValidate) {
+        final String cnpjRegex = "\\A\\d{2}\\.\\d{3}\\.\\d{3}\\/\\d{4}-\\d{2}$";
+
+        final Pattern pattern = Pattern.compile(cnpjRegex, Pattern.MULTILINE);
+        final Matcher matcher = pattern.matcher(maskToValidate);
+
+        if (matcher.matches()) {
+            return false;
+        } else {
+            return true;
         }
     }
 
