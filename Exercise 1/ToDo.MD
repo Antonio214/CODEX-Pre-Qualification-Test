@@ -13,6 +13,8 @@
 
 ## Side Notes:
 
+- I'm proud of the final result here, it seems pretty straight forward to add new validation rules which is the core for this project. So code seems to resolve the current problem and can easily scale around rules if needed. Behold TDD at its best ;).
+- I could create an interface to CNPJ model, however since the CNPJ is core to the problem it didn't seem a needed refactoring
 - Mask format correspond to "XXX.XXX.XXX/YYYY-ZZ"
 - Number format correspond to XXXXXXXXXYYYYZZ
 
