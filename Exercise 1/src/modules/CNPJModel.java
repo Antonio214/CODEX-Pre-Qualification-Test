@@ -1,58 +1,42 @@
 package modules;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class CNPJModel {
     private String cnpjString;
     private Integer[] cnpjDigits;
     private String[] cnpjChars;
-    private boolean onlyDigits;
+    Integer nonDigitsCounter;
     private int amountOfDigits;
 
     public CNPJModel(String cnpjInStringFormat) {
+        this.amountOfDigits = 0;
+        this.nonDigitsCounter = 0;
         this.cnpjString = cnpjInStringFormat;
         this.cnpjChars = this.cnpjString.split("");
-        this.onlyDigits = this.verifyOnlyDigits(this.cnpjString);
-        this.amountOfDigits = 0;
-        this.cnpjDigits = this.convertStringToDigits(this.cnpjChars);
+        this.cnpjDigits = new Integer[14];
+        this.generateDigitsFromChars();
     }
 
-    // return true if only contains digits, false otherwise
-    private boolean verifyOnlyDigits(String candidate) {
-        final String nonDigitsRegex = "\\D";
+    // Generate cnpj digits from chars
+    private void generateDigitsFromChars() {
+        Integer newDigit;
 
-        final Pattern pattern = Pattern.compile(nonDigitsRegex, Pattern.MULTILINE);
-        final Matcher matcher = pattern.matcher(candidate);
-
-        if (matcher.find()) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    // Transform cpnj from string into a array of integers
-    private Integer[] convertStringToDigits(String[] cnpjCharsToConvert) {
-        Integer[] digits = new Integer[14];
-        Integer nonDigitsCounter = 0;
-
-        for (int i = 0; i < cnpjCharsToConvert.length; i++) {
+        for (int i = 0; i < this.cnpjChars.length; i++) {
             try {
-                digits[i - nonDigitsCounter] = Integer.parseInt(cnpjCharsToConvert[i]);
-                this.amountOfDigits++;
+                newDigit = Integer.parseInt(this.cnpjChars[i]);
+                this.saveDigit(newDigit);
             } catch (NumberFormatException e) {
-                nonDigitsCounter++;
-            } catch (ArrayIndexOutOfBoundsException e) {
-                // this means cnpj has more digits than it should
-                this.amountOfDigits = 15;
-                return digits;
+                this.nonDigitsCounter++;
             } catch (Exception e) {
                 System.err.println(e);
             }
         }
+    }
 
-        return digits;
+    private void saveDigit(Integer digit) {
+        if (this.amountOfDigits < 14) {
+            this.cnpjDigits[this.amountOfDigits] = digit;
+        }
+        amountOfDigits++;
     }
 
     public String getString() {
@@ -68,6 +52,6 @@ public class CNPJModel {
     }
 
     public boolean hasOnlyDigits() {
-        return this.onlyDigits;
+        return this.nonDigitsCounter == 0;
     }
 }

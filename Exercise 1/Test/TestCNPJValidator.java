@@ -22,7 +22,7 @@ public class TestCNPJValidator {
 
         for (String validCNPJ : validCNPJs) {
             CNPJModel toValidate = new CNPJModel(validCNPJ);
-            Assertions.assertEquals(validator.check(toValidate), Messages.VALID_CNPJ,
+            Assertions.assertEquals(Messages.VALID_CNPJ, validator.check(toValidate),
                     "App is not recognizing a valid CPNJ as valid");
         }
     }
@@ -33,7 +33,7 @@ public class TestCNPJValidator {
 
         for (String invalidCNPJ : invalidCNPJs) {
             CNPJModel toValidate = new CNPJModel(invalidCNPJ);
-            Assertions.assertEquals(validator.check(toValidate), Messages.INVALID_DIGIT,
+            Assertions.assertEquals(Messages.INVALID_DIGIT, validator.check(toValidate),
                     "App is not recognizing a CNPJ as invalid");
         }
     }
@@ -42,10 +42,10 @@ public class TestCNPJValidator {
     public void shouldInformInvalidQuantityOfNumbers() {
         System.out.println("This should inform that a CNPJ informed doesn't have 14 digits");
         CNPJModel toValidate = new CNPJModel(smallCNPJ);
-        Assertions.assertEquals(validator.check(toValidate), Messages.INVALID_AMOUNT_DIGIT,
+        Assertions.assertEquals(Messages.INVALID_AMOUNT_DIGIT, validator.check(toValidate),
                 "App is not recognizing the size of CNPJ for less digits");
         toValidate = new CNPJModel(bigCNPJ);
-        Assertions.assertEquals(validator.check(toValidate), Messages.INVALID_AMOUNT_DIGIT,
+        Assertions.assertEquals(Messages.INVALID_AMOUNT_DIGIT, validator.check(toValidate),
                 "App is not recognizing the size of CNPJ for more digits");
     }
 
@@ -55,7 +55,7 @@ public class TestCNPJValidator {
 
         for (String invalidMaskCNPJ : invalidMaskCNPJs) {
             CNPJModel toValidate = new CNPJModel(invalidMaskCNPJ);
-            Assertions.assertEquals(validator.check(toValidate), Messages.INVALID_MASK,
+            Assertions.assertEquals(Messages.INVALID_MASK, validator.check(toValidate),
                     "App is not recognizing an invalid Mask");
         }
     }
@@ -66,7 +66,7 @@ public class TestCNPJValidator {
 
         for (String validCNPJ : validMaskCNPJs) {
             CNPJModel toValidate = new CNPJModel(validCNPJ);
-            Assertions.assertEquals(validator.check(toValidate), Messages.VALID_CNPJ,
+            Assertions.assertEquals(Messages.VALID_CNPJ, validator.check(toValidate),
                     "App is not recognizing a valid mask CPNJ as valid");
         }
     }

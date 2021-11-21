@@ -3,7 +3,7 @@ import modules.CNPJValidator;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        CNPJModel cnpjModel = new CNPJModel("1234567891011121314");
+        CNPJModel cnpjModel = new CNPJModel("43517047000130");
         CNPJValidator validator = new CNPJValidator();
 
         validator.check(cnpjModel);
