@@ -10,7 +10,7 @@ import useCases.MaskValidation;
 public class CNPJValidator {
 
     public String check(CNPJModel cnpjToValidate) {
-        iValidationRule[] rules = { new AmountOfDigitsValidation(), new DigitValidation(), new MaskValidation() };
+        iValidationRule[] rules = { new MaskValidation(), new AmountOfDigitsValidation(), new DigitValidation() };
 
         for (iValidationRule rule : rules) {
             if (rule.isBrokenBy(cnpjToValidate)) {

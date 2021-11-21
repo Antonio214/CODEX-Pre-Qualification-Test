@@ -59,4 +59,16 @@ So there will be an extra todo.md file in the project where you can find my mile
 
 ## Images and Videos
 
-**TODO: add images and videos here**
+Here are some prints of the working software:
+
+![Image01](./assets/Img01.png)
+
+![Image02](./assets/Img02.png)
+
+![Image03](./assets/Img03.png)
+
+![Image04](./assets/Img04.png)
+
+![Image05](./assets/Img05.png)
+
+![Image06](./assets/Img06.png)

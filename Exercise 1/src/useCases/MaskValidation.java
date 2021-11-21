@@ -14,7 +14,6 @@ public class MaskValidation implements iValidationRule {
         return Messages.INVALID_MASK;
     }
 
-    // TODO: improve this part
     @Override
     public boolean isBrokenBy(CNPJModel cnpj) {
         if (cnpj.hasOnlyDigits()) {
