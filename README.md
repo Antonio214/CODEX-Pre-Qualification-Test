@@ -16,7 +16,7 @@ Also, I will be using a specific git workflow that I choose for this challenge. 
 
 Just to keep my progress in the challenge I will be updating the following To-Do list:
 
-- [] Exercise 1 - CNPJ validator
+- [Completed] Exercise 1 - CNPJ validator
 - [] Exercise 2 - Rectangles that Intersect
 - [] Exercise 3 - Rectangles Intersection Area Calculator
 - [] Exercise 4 - Simple To-do List
