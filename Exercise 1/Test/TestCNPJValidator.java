@@ -10,6 +10,7 @@ public class TestCNPJValidator {
             "55555555555555" };
     String smallCNPJ = "1234";
     String bigCNPJ = "1234567891011121314";
+    String invalidMaskCNPJ = "43..517.047/0001-30";
     CNPJValidator validator = new CNPJValidator();
 
     @Test
@@ -39,5 +40,12 @@ public class TestCNPJValidator {
                 "App is not recognizing the size of CNPJ for less digits");
         Assertions.assertEquals(validator.check(bigCNPJ), Messages.INVALID_AMOUNT_DIGIT,
                 "App is not recognizing the size of CNPJ for more digits");
+    }
+
+    @Test
+    public void shouldInformInvalidMask() {
+        System.out.println("This should inform that a CNPJ has an invalid mask");
+        Assertions.assertEquals(validator.check(invalidMaskCNPJ), Messages.INVALID_MASK,
+                "App is not recognizing an invalid Mask");
     }
 }
