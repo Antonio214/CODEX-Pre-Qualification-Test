@@ -1,6 +1,6 @@
 package interfaces;
 
-import useCases.CNPJModel;
+import Models.CNPJModel;
 
 public interface iValidationRule {
     public String getErrorMessage();

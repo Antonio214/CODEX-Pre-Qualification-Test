@@ -1,4 +1,4 @@
-package useCases;
+package Models;
 
 public class CNPJModel {
     private String cnpjString;

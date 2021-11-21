@@ -3,6 +3,7 @@ package useCases;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import Models.CNPJModel;
 import constants.Messages;
 import interfaces.iValidationRule;
 

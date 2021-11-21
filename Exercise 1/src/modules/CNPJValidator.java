@@ -1,9 +1,9 @@
 package modules;
 
+import Models.CNPJModel;
 import constants.Messages;
 import interfaces.iValidationRule;
 import useCases.AmountOfDigitsValidation;
-import useCases.CNPJModel;
 import useCases.DigitValidation;
 import useCases.MaskValidation;
 

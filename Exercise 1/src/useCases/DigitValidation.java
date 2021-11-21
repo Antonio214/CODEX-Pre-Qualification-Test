@@ -1,5 +1,6 @@
 package useCases;
 
+import Models.CNPJModel;
 import constants.Messages;
 import interfaces.iValidationRule;
 
