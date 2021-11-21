@@ -22,10 +22,8 @@ This will open the binaries folder and execute the app.
 
 As an extra you can run the tests in this project by running the following command:
 
-**TODO: Add Test class here**
-
 ```bash
-    cd bin/ && java -jar ../lib/junit-platform-console-standalone-1.7.0-all.jar -cp "." --select-class
+    cd bin/ && java -jar ../lib/junit-platform-console-standalone-1.7.0-all.jar -cp "." --select-class TestRectIntersect
 ```
 
 ## About my solution
