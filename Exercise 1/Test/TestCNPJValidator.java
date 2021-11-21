@@ -11,9 +11,11 @@ public class TestCNPJValidator {
             "20.499.660/0001-76" };
     String[] invalidCNPJs = { "11111111111111", "22222222222222", "33333333333333", "44444444444444",
             "55555555555555" };
+    String[] invalidMaskCNPJs = { "11.111.111/1111-11", "22.222.222/2222-22", "33.333.333/3333-33",
+            "44.444.444/4444-44", "55.555.555/5555-55" };
     String smallCNPJ = "1234";
     String bigCNPJ = "1234567891011121314";
-    String[] invalidMaskCNPJs = { "43..517.047/0001-30", "A43.517.047/0001-30", "43.517.047/0001-30A" };
+    String[] invalidMask = { "43..517.047/0001-30", "A43.517.047/0001-30", "43.517.047/0001-30A" };
     CNPJValidator validator = new CNPJValidator();
 
     @Test
@@ -53,7 +55,7 @@ public class TestCNPJValidator {
     public void shouldInformInvalidMask() {
         System.out.println("This should inform that a CNPJ has an invalid mask");
 
-        for (String invalidMaskCNPJ : invalidMaskCNPJs) {
+        for (String invalidMaskCNPJ : invalidMask) {
             CNPJModel toValidate = new CNPJModel(invalidMaskCNPJ);
             Assertions.assertEquals(Messages.INVALID_MASK, validator.check(toValidate),
                     "App is not recognizing an invalid Mask");
@@ -68,6 +70,17 @@ public class TestCNPJValidator {
             CNPJModel toValidate = new CNPJModel(validCNPJ);
             Assertions.assertEquals(Messages.VALID_CNPJ, validator.check(toValidate),
                     "App is not recognizing a valid mask CPNJ as valid");
+        }
+    }
+
+    @Test
+    public void shouldInformNotValidMaskCNPJ() {
+        System.out.println("This should inform that a mask format CNPJ is not valid!");
+
+        for (String invalidMaskCNPJ : invalidMaskCNPJs) {
+            CNPJModel toValidate = new CNPJModel(invalidMaskCNPJ);
+            Assertions.assertEquals(Messages.INVALID_DIGIT, validator.check(toValidate),
+                    "App is not recognizing a invalid mask CNPJ as invalid");
         }
     }
 
