@@ -5,6 +5,9 @@ import models.PointModel;
 import models.RectangleModel;
 
 public class IntersectionVerifier {
+
+    // if one of rect B point is inside rect A than they intersect
+    // or if they share a common edge point they intersect
     public String verify(RectangleModel rectA, RectangleModel rectB) {
         PointModel[] pointsOfB = rectB.listEdgePoints();
 

@@ -38,6 +38,7 @@ public class RectangleModel {
         return this.edgePoints;
     }
 
+    // returns true if candidate is inside of this rect or if its an edge point
     public boolean hasPoint(PointModel candidate) {
         for (PointModel point : edgePoints) {
             if (point.isEqual(candidate)) {
