@@ -8,14 +8,14 @@ public class CNPJModel {
     private Integer[] cnpjDigits;
     private String[] cnpjChars;
     private boolean onlyDigits;
+    private int amountOfDigits;
 
     public CNPJModel(String cnpjInStringFormat) {
         this.cnpjString = cnpjInStringFormat;
         this.cnpjChars = this.cnpjString.split("");
         this.onlyDigits = this.verifyOnlyDigits(this.cnpjString);
-        if (this.onlyDigits) {
-            this.cnpjDigits = this.convertStringToDigits(this.cnpjChars);
-        }
+        this.amountOfDigits = 0;
+        this.cnpjDigits = this.convertStringToDigits(this.cnpjChars);
     }
 
     // return true if only contains digits, false otherwise
@@ -34,10 +34,22 @@ public class CNPJModel {
 
     // Transform cpnj from string into a array of integers
     private Integer[] convertStringToDigits(String[] cnpjCharsToConvert) {
-        Integer[] digits = new Integer[cnpjCharsToConvert.length];
+        Integer[] digits = new Integer[14];
+        Integer nonDigitsCounter = 0;
 
         for (int i = 0; i < cnpjCharsToConvert.length; i++) {
-            digits[i] = Integer.parseInt(cnpjCharsToConvert[i]);
+            try {
+                digits[i - nonDigitsCounter] = Integer.parseInt(cnpjCharsToConvert[i]);
+                this.amountOfDigits++;
+            } catch (NumberFormatException e) {
+                nonDigitsCounter++;
+            } catch (ArrayIndexOutOfBoundsException e) {
+                // this means cnpj has more digits than it should
+                this.amountOfDigits = 15;
+                return digits;
+            } catch (Exception e) {
+                System.err.println(e);
+            }
         }
 
         return digits;
@@ -52,7 +64,7 @@ public class CNPJModel {
     }
 
     public Integer getAmountOfDigits() {
-        return this.cnpjDigits.length;
+        return this.amountOfDigits;
     }
 
     public boolean hasOnlyDigits() {
