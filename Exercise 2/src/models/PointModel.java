@@ -10,6 +10,12 @@ public class PointModel {
         this.generateIntergerPositions();
     }
 
+    PointModel(Integer xPosition, Integer yPosition) {
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
+        this.generateString();
+    }
+
     private void generateIntergerPositions() {
         String[] positionChars = this.stringNotation.split(",");
 
@@ -19,5 +25,9 @@ public class PointModel {
 
     public boolean isEqual(PointModel candidate) {
         return this.xPosition == candidate.xPosition && this.yPosition == candidate.yPosition;
+    }
+
+    private void generateString() {
+        this.stringNotation = Integer.toString(xPosition) + ";" + Integer.toString(yPosition);
     }
 }

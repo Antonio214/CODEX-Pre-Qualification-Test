@@ -21,7 +21,7 @@ public class TestRectIntersect {
     @Test
     public void shouldInformSameRectIntersect() {
         System.out.println("This should inform that rect (0,0;1,1) and rect (0,0;1,1) intersect");
-        String resultMessage = verifier.verify(rectA, rectB);
+        String resultMessage = verifier.verify(rectA, rectA);
 
         Assertions.assertEquals(Messages.INTERSECT_MESSAGE, resultMessage);
     }

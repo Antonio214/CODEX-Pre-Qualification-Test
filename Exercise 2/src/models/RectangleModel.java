@@ -14,14 +14,17 @@ public class RectangleModel {
 
     // generate botLeft and TopRigth points, this points are provided
     private void generateGivenPoints() {
-        this.botLeftPoint = new PointModel("0,0");
-        this.topRigthPoint = new PointModel("1,1");
+        String removedParenthesis = this.stringRepresentation.replace("(", "").replace(")", "");
+        String[] pointsNotation = removedParenthesis.split(";");
+
+        this.botLeftPoint = new PointModel(pointsNotation[0]);
+        this.topRigthPoint = new PointModel(pointsNotation[1]);
     }
 
     // generate topLeft and botRigth point, this points are inferred
     private void generateSecondaryPoints() {
-        this.topLeftPoint = new PointModel("0,1");
-        this.botRigthPoint = new PointModel("1,0");
+        this.topLeftPoint = new PointModel(this.botLeftPoint.xPosition, this.topRigthPoint.yPosition);
+        this.botRigthPoint = new PointModel(this.topRigthPoint.xPosition, this.botLeftPoint.yPosition);
     }
 
     private void generateEdgesPoints() {
