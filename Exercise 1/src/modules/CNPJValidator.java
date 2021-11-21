@@ -6,19 +6,18 @@ import java.util.regex.Pattern;
 import constants.Messages;
 
 public class CNPJValidator {
-    public String check(String cnpjToValidate) {
-        if (maskIsInvalid(cnpjToValidate)) {
+    final Integer CNPJ_AMOUNT_OF_DIGITS = 14;
+
+    public String check(CNPJModel cnpjToValidate) {
+        if (!cnpjToValidate.hasOnlyDigits() && maskIsInvalid(cnpjToValidate.getString())) {
             return Messages.INVALID_MASK;
         }
 
-        String[] cnpjChars = cnpjToValidate.split("");
-        if (hasWrongAmountOfDigits(cnpjChars)) {
+        if (cnpjToValidate.getAmountOfDigits() != CNPJ_AMOUNT_OF_DIGITS) {
             return Messages.INVALID_AMOUNT_DIGIT;
         }
 
-        Integer[] cnpjDigits = convertStringToDigits(cnpjChars);
-
-        if (validateDigit(cnpjDigits)) {
+        if (validateDigit(cnpjToValidate.getDigits())) {
             return Messages.VALID_CNPJ;
         } else {
             return Messages.INVALID_DIGIT;
@@ -32,16 +31,11 @@ public class CNPJValidator {
         final Pattern pattern = Pattern.compile(cnpjRegex, Pattern.MULTILINE);
         final Matcher matcher = pattern.matcher(maskToValidate);
 
-        if (matcher.matches()) {
+        if (matcher.find()) {
             return false;
         } else {
             return true;
         }
-    }
-
-    // Return true if the candidate doesn't has 14 digits
-    private boolean hasWrongAmountOfDigits(String[] candidate) {
-        return candidate.length != 14;
     }
 
     // Uses Receitas Federal's logic to validate digits
@@ -71,14 +65,4 @@ public class CNPJValidator {
         return firstDigitVerifier == cnpjDigits[12] && secondDigitVerifier == cnpjDigits[13];
     }
 
-    // Transform cpnj from string into a array of integers
-    private Integer[] convertStringToDigits(String[] cnpjCharsToConvert) {
-        Integer[] digits = new Integer[14];
-
-        for (int i = 0; i < cnpjCharsToConvert.length; i++) {
-            digits[i] = Integer.parseInt(cnpjCharsToConvert[i]);
-        }
-
-        return digits;
-    }
 }

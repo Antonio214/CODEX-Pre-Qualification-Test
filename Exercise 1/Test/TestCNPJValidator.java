@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import constants.Messages;
+import modules.CNPJModel;
 import modules.CNPJValidator;
 
 public class TestCNPJValidator {
@@ -10,7 +11,7 @@ public class TestCNPJValidator {
             "55555555555555" };
     String smallCNPJ = "1234";
     String bigCNPJ = "1234567891011121314";
-    String invalidMaskCNPJ = "43..517.047/0001-30";
+    String[] invalidMaskCNPJs = { "43..517.047/0001-30", "A43.517.047/0001-30", "43.517.047/0001-30A" };
     CNPJValidator validator = new CNPJValidator();
 
     @Test
@@ -18,7 +19,8 @@ public class TestCNPJValidator {
         System.out.println("This should inform that a number format CNPJ is valid!");
 
         for (String validCNPJ : validCNPJs) {
-            Assertions.assertEquals(validator.check(validCNPJ), Messages.VALID_CNPJ,
+            CNPJModel toValidate = new CNPJModel(validCNPJ);
+            Assertions.assertEquals(validator.check(toValidate), Messages.VALID_CNPJ,
                     "App is not recognizing a valid CPNJ as valid");
         }
     }
@@ -28,7 +30,8 @@ public class TestCNPJValidator {
         System.out.println("This should inform that a number format CNPJ is not valid!");
 
         for (String invalidCNPJ : invalidCNPJs) {
-            Assertions.assertEquals(validator.check(invalidCNPJ), Messages.INVALID_DIGIT,
+            CNPJModel toValidate = new CNPJModel(invalidCNPJ);
+            Assertions.assertEquals(validator.check(toValidate), Messages.INVALID_DIGIT,
                     "App is not recognizing a CNPJ as invalid");
         }
     }
@@ -36,17 +39,23 @@ public class TestCNPJValidator {
     @Test
     public void shouldInformInvalidQuantityOfNumbers() {
         System.out.println("This should inform that a CNPJ informed doesn't have 14 digits");
-        Assertions.assertEquals(validator.check(smallCNPJ), Messages.INVALID_AMOUNT_DIGIT,
+        CNPJModel toValidate = new CNPJModel(smallCNPJ);
+        Assertions.assertEquals(validator.check(toValidate), Messages.INVALID_AMOUNT_DIGIT,
                 "App is not recognizing the size of CNPJ for less digits");
-        Assertions.assertEquals(validator.check(bigCNPJ), Messages.INVALID_AMOUNT_DIGIT,
+        toValidate = new CNPJModel(bigCNPJ);
+        Assertions.assertEquals(validator.check(toValidate), Messages.INVALID_AMOUNT_DIGIT,
                 "App is not recognizing the size of CNPJ for more digits");
     }
 
     @Test
     public void shouldInformInvalidMask() {
         System.out.println("This should inform that a CNPJ has an invalid mask");
-        Assertions.assertEquals(validator.check(invalidMaskCNPJ), Messages.INVALID_MASK,
-                "App is not recognizing an invalid Mask");
+
+        for (String invalidMaskCNPJ : invalidMaskCNPJs) {
+            CNPJModel toValidate = new CNPJModel(invalidMaskCNPJ);
+            Assertions.assertEquals(validator.check(toValidate), Messages.INVALID_MASK,
+                    "App is not recognizing an invalid Mask");
+        }
     }
 
 }
