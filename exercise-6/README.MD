@@ -9,7 +9,7 @@ You can compile and run this code by using Node (npm) and firebase CLI. However,
 If you still wanna run it, istall Node, npm, fibase CLI and run the following inside the functions folder:
 
 > npm run build
-> firebase emulators:start
+> && firebase emulators:start
 
 Now go to the following URL:
 
