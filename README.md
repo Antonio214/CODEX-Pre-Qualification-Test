@@ -21,6 +21,6 @@ Just to keep my progress in the challenge I will be updating the following To-Do
 - [] Exercise 3 - Rectangles Intersection Area Calculator
 - [] Exercise 4 - Simple To-do List
 - [] Exercise 5 - World Clock Rest Client
-- [] Exercise 6 - World Clock Rest Server
+- [Completed] Exercise 6 - World Clock Rest Server
 - [] Exercise 7 - ERD for Simple Order Manager System
 - [] Exercise 8 - UX - Prototype of New Project Screen
